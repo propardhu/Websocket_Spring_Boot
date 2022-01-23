@@ -22,7 +22,9 @@ public class MessageController {
 
   @MessageMapping("/private-message")
   @SendToUser("/receive/private-message")
-  public ResponseMessage getPrivateMessage(final Message mess, final Principal principal) {
+  public ResponseMessage getPrivateMessage(final Message mess, final Principal principal) throws InterruptedException {
+    Thread.sleep(1000);
+    System.out.println("recived message private"+principal.getName());
     return new ResponseMessage(HtmlUtils.htmlEscape("Sending personal message to user"+principal.getName()+": "+ mess.getMessageContent()));
   }
 

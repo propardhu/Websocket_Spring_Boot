@@ -28,9 +28,9 @@ function connect() {
             showMessage(JSON.parse(message.body).content);
         });
 
-//        stompClient.subscribe('/user/topic/private-messages', function (message) {
-//            showMessage(JSON.parse(message.body).content);
-//        });
+        stompClient.subscribe('/user/receive/private-message', function (message) {
+            showMessage(JSON.parse(message.body).content);
+        });
 //
 //        stompClient.subscribe('/topic/global-notifications', function (message) {
 //            notificationCount = notificationCount + 1;
@@ -53,10 +53,10 @@ function sendMessage() {
     stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': $("#message").val()}));
 }
 
-//function sendPrivateMessage() {
-//    console.log("sending private message");
-//    stompClient.send("/ws/private-message", {}, JSON.stringify({'messageContent': $("#private-message").val()}));
-//}
+function sendPrivateMessage() {
+    console.log("sending private message");
+    stompClient.send("/ws/private-message", {}, JSON.stringify({'messageContent': $("#private-message").val()}));
+}
 //
 //function updateNotificationDisplay() {
 //    if (notificationCount == 0) {
