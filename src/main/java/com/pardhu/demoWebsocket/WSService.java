@@ -23,5 +23,13 @@ public class WSService {
     ResponseMessage res = new ResponseMessage(message);
     messagingTemplate.convertAndSendToUser(id,"/receive/private-message", res);
    }
+   public void sendNotification(final String message) {
+     ResponseMessage res = new ResponseMessage(message);
+     messagingTemplate.convertAndSend("/receive/global-notification",res);
+   }
+  public void sendPrivateNotification(final String message,final String id) {
+    ResponseMessage res = new ResponseMessage(message);
+    messagingTemplate.convertAndSendToUser(id,"/receive/private-notification",res);
+  }
 
 }
