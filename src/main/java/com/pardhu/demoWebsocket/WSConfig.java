@@ -12,7 +12,7 @@ public class WSConfig implements WebSocketMessageBrokerConfigurer {
 
   @Override
   public void configureMessageBroker(final MessageBrokerRegistry registry){
-    registry.enableSimpleBroker("/do");
+    registry.enableSimpleBroker("/receive");
     registry.setApplicationDestinationPrefixes("/ws");
   }
 

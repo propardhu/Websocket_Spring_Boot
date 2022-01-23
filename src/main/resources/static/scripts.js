@@ -24,7 +24,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
 //        updateNotificationDisplay();
-        stompClient.subscribe('/do/message', function (message) {
+        stompClient.subscribe('/receive/message', function (message) {
             showMessage(JSON.parse(message.body).content);
         });
 
